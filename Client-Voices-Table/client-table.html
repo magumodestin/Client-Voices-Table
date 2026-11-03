@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Invoices - with JS Filter</title>
+  </head>
+  <body>
+    <div class="main-box">
+      <div class="top">
+        <div>
+          <h1>Client Invoices</h1>
+          <p>Manage and track all client invoices</p>
+        </div>
+        <div class="btns">
+          <button class="b1">☰ Filter</button>
+          <button class="b1">↓ Export</button>
+          <button class="b2">+ New Invoice</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="invoiceTable">
+          <thead>
+            <tr>
+              <th>
+                CLIENT
+                <select id="clientFilter">
+                  <option value="all">All</option>
+                  <option value="Olivia Chen">Olivia Chen</option>
+                  <option value="Liam Patel">Liam Patel</option>
+                  <option value="Ava Rodriguez">Ava Rodriguez</option>
+                  <option value="Noah Kim">Noah Kim</option>
+                  <option value="Emma Williams">Emma Williams</option>
+                  <option value="James Silva">James Silva</option>
+                </select>
+              </th>
+              <th>INVOICE ID</th>
+              <th>AMOUNT</th>
+              <th>
+                STATUS
+                <select id="statusFilter">
+                  <option value="all">All</option>
+                  <option value="Paid">Paid</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Overdue">Overdue</option>
+                </select>
+              </th>
+              <th>DATE</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-client="Olivia Chen" data-status="Paid">
+              <td>
+                <b>Olivia Chen</b><br /><small>olivia.chen@email.com</small>
+              </td>
+              <td>#INV-10284</td>
+              <td class="price">$2,450.00</td>
+              <td><span class="paid">● Paid</span></td>
+              <td>Sep 12, 2024</td>
+              <td>...</td>
+            </tr>
+            <tr data-client="Liam Patel" data-status="Pending">
+              <td>
+                <b>Liam Patel</b><br /><small>liam.patel@email.com</small>
+              </td>
+              <td>#INV-10283</td>
+              <td class="price">$1,190.00</td>
+              <td><span class="pending">● Pending</span></td>
+              <td>Sep 11, 2024</td>
+              <td>...</td>
+            </tr>
+            <tr data-client="Ava Rodriguez" data-status="Overdue">
+              <td>
+                <b>Ava Rodriguez</b><br /><small>ava.rodriguez@email.com</small>
+              </td>
+              <td>#INV-10282</td>
+              <td class="price">$3,780.00</td>
+              <td><span class="overdue">● Overdue</span></td>
+              <td>Sep 09, 2024</td>
+              <td>...</td>
+            </tr>
+            <tr data-client="Noah Kim" data-status="Paid">
+              <td><b>Noah Kim</b><br /><small>noah.kim@email.com</small></td>
+              <td>#INV-10281</td>
+              <td class="price">$950.00</td>
+              <td><span class="paid">● Paid</span></td>
+              <td>Sep 08, 2024</td>
+              <td>...</td>
+            </tr>
+            <tr data-client="Emma Williams" data-status="Pending">
+              <td>
+                <b>Emma Williams</b><br /><small>emma.williams@email.com</small>
+              </td>
+              <td>#INV-10280</td>
+              <td class="price">$2,100.00</td>
+              <td><span class="pending">● Pending</span></td>
+              <td>Sep 06, 2024</td>
+              <td>...</td>
+            </tr>
+            <tr data-client="James Silva" data-status="Overdue">
+              <td>
+                <b>James Silva</b><br /><small>james.silva@email.com</small>
+              </td>
+              <td>#INV-10279</td>
+              <td class="price">$4,320.00</td>
+              <td><span class="overdue">● Overdue</span></td>
+              <td>Sep 04, 2024</td>
+              <td>...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <style>
+      body {
+        background: #f2f2f2;
+        font-family: Arial;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+      }
+      .main-box {
+        background: white;
+        width: 100%;
+        max-width: 1050px;
+        border: 1.5px solid #d1d5db;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+      }
+      .top h1 {
+        margin: 0;
+      }
+      .top p {
+        color: #6b7280;
+      }
+      .btns {
+        display: flex;
+        gap: 10px;
+      }
+      .b1 {
+        background: #f9fafb;
+        border: 1px solid #ddd;
+        padding: 10px 16px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .b2 {
+        background: #27427a;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .table-wrap {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background: #f9fafb;
+        padding: 16px;
+        font-size: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      th select {
+        display: block;
+        margin-top: 6px;
+        padding: 4px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      td {
+        padding: 16px;
+        font-size: 14px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .price {
+        font-weight: 700;
+      }
+      small {
+        color: #6b7280;
+        font-size: 12px;
+      }
+      .paid,
+      .pending,
+      .overdue {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .paid {
+        background: #a8e6a3;
+        color: #145a17;
+      }
+      .pending {
+        background: #ffe98a;
+        color: #7a5a00;
+      }
+      .overdue {
+        background: #ff9a9a;
+        color: #8a0a0a;
+      }
+    </style>
+
+    <script src="client-table.js"></script>
+  </body>
+</html>
