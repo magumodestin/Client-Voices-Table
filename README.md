@@ -1,3 +1,5 @@
+Live link to website = "https://clientvoicestable-git-main-magumodestiny-7447.vercel.app/"
+
 # Client Invoices Table
 
 A clean client invoices dashboard table with live dropdown filters. Filter the list by client name, by payment status, or both at the same time, and the table updates instantly without reloading the page.
@@ -22,7 +24,7 @@ A clean client invoices dashboard table with live dropdown filters. Filter the l
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/client-invoices-table.git
+   [git clone https://github.com/your-username/client-invoices-table.git](https://github.com/magumodestin/Country-Codes-Table)
    ```
 2. Open the folder in VS Code.
 3. Right-click `client-table.html` and choose **Open with Live Server**, or double-click the file to open it in your browser.
@@ -48,22 +50,5 @@ client-invoices-table/
 └── README.md
 ```
 
-## Deploying to Vercel
-
-1. Push the project to a GitHub repository.
-2. On Vercel, choose **Add New**, then **Project**, and import the repository.
-3. Leave the framework preset as **Other** and deploy.
-
-The included `vercel.json` makes the main link open `client-table.html`.
-
-## Future Improvements
-
-- Search box for client name or invoice ID
-- Sort by amount or date
-- Working Filter, Export and New Invoice buttons
-- Row actions menu
-- Load invoices from a database
-
-## License
-
+\
 This project is open source and free to use for learning and personal projects.
